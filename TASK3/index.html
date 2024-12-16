@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Task (Show API Response)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="text-2xl font-bold text-gray-800 mb-16">
+      <h1 class="mb-6">
+        Enter your phone number below and see the API response
+      </h1>
+
+      <input
+        type="text"
+        id="phonenumber"
+        class="w-full px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        placeholder="Enter your phone number"
+      />
+
+      <button
+        id="submitBtn"
+        class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+      >
+        Send Request
+      </button>
+
+      <div
+        id="headerData"
+        class="mt-6 bg-gray-50 flex items-center justify-center p-4 rounded-md text-sm text-gray-800 space-y-2"
+      >
+        <!-- Modal -->
+        <div
+          id="headerData-modal"
+          class="hidden fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50"
+        >
+          <div class="bg-white p-6 rounded-md max-w-sm mx-auto">
+            <h2 class="text-2xl font-semibold text-gray-900">
+              Hey!! We did it.
+            </h2>
+            <p
+              class="para text-4xl text-green-600 text-gray-700 mt-2 animate-bounce"
+            ></p>
+            <button
+              id="closeModalBtn"
+              class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
