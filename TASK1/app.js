@@ -43,6 +43,18 @@ function TaskTable() {
   const handleSubmit = () => {
     console.log("Data ready to post:", tableData);
     alert("Data is ready for API submission. Check console for details.");
+
+    setTableData(
+      tasks.map((task) => ({
+        task,
+        column1: "",
+        column2: "",
+        column3: "",
+        column4: "",
+        column5: "",
+        column6: "",
+      }))
+    );
   };
 
   return (
@@ -69,7 +81,6 @@ function TaskTable() {
                   <input
                     type="text"
                     value={row[`column${col}`]}
-                    placeholder={`Edit Field ${col}`}
                     className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200"
                     onChange={(e) =>
                       handleChange(index, `column${col}`, e.target.value)
