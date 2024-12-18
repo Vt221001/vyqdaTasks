@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PostCard from "../Components/PostCard";
 import Modal from "../Components/Modal";
+import { ToastContainer, toast } from "react-toastify";
 
 const MainScreen = () => {
   const [title, setTitle] = useState("");
@@ -40,10 +41,11 @@ const MainScreen = () => {
       await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/delete-post/${id}`
       );
-      alert("Post deleted successfully!");
+      toast.success("Post deleted successfully!");
       setPosts(posts.filter((post) => post.id !== id));
     } catch (err) {
-      console.error("Error deleting post:", err);
+      // console.error("Error deleting post:", err);
+      toast.error("An error occurred! Please try again.");
     }
   };
 
@@ -53,13 +55,15 @@ const MainScreen = () => {
         title,
         content: description,
       });
-      alert("Note saved successfully!");
+      // alert("Note saved successfully!");
+      toast.success("Note saved successfully!");
       getAllPosts();
       setIsModalOpen(false);
       setDescription("");
       setTitle("");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      toast.error("An error occurred! Please try again.");
     }
   };
 
@@ -69,14 +73,14 @@ const MainScreen = () => {
         <input
           type="text"
           value={title}
-          placeholder="Take a note..."
+          placeholder="Take a note and enter ..."
           className="w-full lg:w-1/2 md:w-2/3 p-3 rounded-lg border border-gray-300 shadow-sm outline-none"
           onKeyDown={handleKeyPress}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
-      <div className="flex justify-start lg:gap-6 md:gap-6 flex-wrap">
+      <div className="flex justify-start gap-6 flex-wrap">
         {posts.map((post) => (
           <PostCard
             key={post.id}
@@ -96,6 +100,8 @@ const MainScreen = () => {
           setDescription={setDescription}
         />
       )}
+
+      <ToastContainer />
     </div>
   );
 };

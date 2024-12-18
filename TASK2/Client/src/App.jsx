@@ -1,4 +1,5 @@
 import MainPage from "./Pages/MainPage.jsx";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
